@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Spid_SSO>
+      <version>0.1.0</version>
+    </Spid_SSO>
+  </modules>
+  <frontend>
+    <routers>
+      <sso>
+        <use>standard</use>
+          <args>
+            <module>Spid_SSO</module>
+            <frontName>sso</frontName>
+          </args>
+      </sso>
+    </routers>
+		<layout>
+		  <updates>
+			<sso>
+			  <file>sso.xml</file>
+			</sso>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <sso>
+        <class>Spid_SSO_Helper</class>
+      </sso>
+    </helpers>
+	<blocks>
+	  <sso>
+		<class>Spid_SSO_Block</class>
+	  </sso>
+	</blocks>
+  </global>
+  <admin>
+	<routers>
+	  <sso>
+	    <use>admin</use>
+		<args>
+		  <module>Spid_SSO</module>
+		  <frontName>admin_sso</frontName>
+		</args>
+	  </sso>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <sso module="sso">
+		<title>SSO</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <ssobackend module="sso">
+			<title>Demo Backend</title>
+			<sort_order>0</sort_order>
+			<action>admin_sso/adminhtml_ssobackend</action>
+		  </ssobackend>
+		</children>
+	  </sso>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<sso translate="title" module="sso">
+			  <title>SSO</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <ssobackend translate="title">
+			<title>Demo Backend</title>
+		  </ssobackend>
+			  </children>
+			</sso>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<sso>
+		  <file>sso.xml</file>
+		</sso>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

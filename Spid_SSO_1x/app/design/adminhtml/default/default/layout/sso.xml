@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <sso_adminhtml_ssobackend_index>
+	<reference name="content">
+	  <block type="sso/adminhtml_ssobackend" name="ssobackend" template="sso/ssobackend.phtml"/>
+	</reference>
+  </sso_adminhtml_ssobackend_index>
+</layout>
